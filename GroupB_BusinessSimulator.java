@@ -1,7 +1,6 @@
 public class GroupB_BusinessSimulator {
 
-    // Generic subtotal calculator: supports either a percentage discount
-    // or a flat UGX amount off, once a quantity threshold is reached.
+ 
     public static double calculateSubtotal(double price, int quantity,
                                             int threshold, double discountValue,
                                             boolean isPercentage) {
@@ -18,7 +17,6 @@ public class GroupB_BusinessSimulator {
         return subtotal;
     }
     
-    // This method creates the discount explanation that will be displayed next to each item on the receipt.
     public static String buildNote(int quantity, int threshold, boolean neverDiscounted,
                                     boolean isPercentage, double discountValue) {
         if (neverDiscounted) {
@@ -34,8 +32,7 @@ public class GroupB_BusinessSimulator {
             return "no discount \u2014 fewer than " + threshold;
         }
     }
-// Store the four products sold by Kampala Corner Cafe in an array.
-// Method to print the receipt in the required KABS-style format
+
     public static void printReceipt(String[] items, int[] quantities,
                                      double[] subtotals, String[] notes) {
 
@@ -60,9 +57,6 @@ public class GroupB_BusinessSimulator {
 
     public static void main(String[] args) {
 
-        // --------------------------------
-        // STORE ITEMS AND PRICES 
-        // --------------------------------
 
         String[] items = {
             "Rice (plate)",
@@ -77,10 +71,7 @@ public class GroupB_BusinessSimulator {
             1000.00,
             2500.00
         };
-        // --------------------------------
-        // DISPLAY PRICE LIST
-        // --------------------------------
-
+ 
         System.out.println("==== KAMPALA CORNER CAFE ====");
 
         for (int i = 0; i < items.length; i++) {
@@ -92,55 +83,43 @@ public class GroupB_BusinessSimulator {
             );
         }
 
-        // --------------------------------
-        // QUANTITIES PURCHASED  
-        // --------------------------------
 
         int[] quantities = {
-            3,   // Rice 
-            2,   // Chicken
-            2,   // Chapati
-            6    // Soda
+            3,   
+            2,   
+            2,   
+            6    
         };
 
-        // --------------------------------
-        // DISCOUNT RULES (per item, since each rule is different)
-        // threshold        : minimum quantity for the discount to kick in
-        // discountValue    : 0.05 = 5%, 500.0 = flat UGX 500, etc.
-        // isPercentage     : true = % off the item's total, false = flat UGX off
-        // neverDiscounted  : true overrides everything else (Chicken)
-        // --------------------------------
 
         int[] thresholds = {
-            4,                  // Rice: 4+ plates
-            Integer.MAX_VALUE,  // Chicken: unreachable threshold, never discounted
-            3,                  // Chapati: 3+
-            6                   // Soda: 6+
+            4,                  
+            Integer.MAX_VALUE,  
+            3,                  
+            6                   
         };
 
         double[] discountValues = {
-            0.05,   // Rice: 5% off rice total
-            0.0,    // Chicken: n/a
-            500.0,  // Chapati: flat UGX 500 off chapati total
-            0.10    // Soda: 10% off soda total
+            0.05,   
+            0.0,    
+            500.0,  
+            0.10    
         };
 
         boolean[] isPercentage = {
-            true,   // Rice
-            false,  // Chicken (unused)
-            false,  // Chapati (flat amount)
-            true    // Soda
+            true,   
+            false,  
+            false,  
+            true    
         };
 
         boolean[] neverDiscounted = {
-            false,  // Rice
-            true,   // Chicken
-            false,  // Chapati
-            false   // Soda
+            false,  
+            true,   
+            false,  
+            false   
         };
-     // --------------------------------
-        // CALCULATE SUBTOTALS + NOTES
-        // --------------------------------
+
 
         double[] subtotals = new double[items.length];
         String[] notes = new String[items.length];
@@ -164,9 +143,6 @@ public class GroupB_BusinessSimulator {
             );
         }
 
-        // --------------------------------
-        // PRINT RECEIPT
-        // --------------------------------
 
         printReceipt(
             items,
